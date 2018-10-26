@@ -2,7 +2,10 @@ ul {list-style-type: none;}
 body {
     font-family: Verdana, impact;
     height: 100%;
-    margin: 0;
+    margin-right: 0;
+    margin-left: 0%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .countainer{
@@ -47,7 +50,7 @@ body {
 /* Weekdays (Mon-Sun) */
 .weekdays {
     margin: 0;
-    padding: 10px 0;
+    padding: 1% 0;
     background-color:#ddd;
 }
 
@@ -66,12 +69,13 @@ body {
 }
 
 .days li {
+    /*border: 1px solid gray;*/
     list-style-type: none;
     display: inline-block;
     width: 13.6%;
     text-align: center;
-    padding-top: 80px;
-    margin-bottom: 5px;
+    padding-top: 8%;
+    margin: 0;
     font-size:14px;
     color: #777;
 }
