@@ -1,19 +1,28 @@
 /*style sheet for login page */
 h1{
   color:hsl(240,80%,55%);
-  padding:35px;
+  padding-top:15px;
+  padding-left:25px;
+  padding-right: 25px;
   font-family:"Helvetica";
 }
 
 #titleContainer{
-  background-color: gray;
+  border-bottom: 2px solid gray;
 }
-#loginContainer{
 
+#contentContainer{
+  border: 5px;
+  border-color: blue;
+  border-style: solid;
 }
 
 #outerBoxContainer{
-    width: 40%;
+    width: 35%;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom: 50px;
+    padding-top:50px;
 }
 
 button{
