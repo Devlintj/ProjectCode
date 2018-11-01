@@ -1,6 +1,6 @@
 /*style sheet for login page */
 h1{
-  color:hsl(240,80%,55%);
+  color:hsl(200,40%,45%);
   padding-top:15px;
   padding-left:25px;
   padding-right: 25px;
@@ -10,12 +10,18 @@ h1{
 
 #titleContainer{
   border-bottom: 2px solid gray;
+  background-color: hsl(50, 40%, 60%);
+  
 }
 
 #contentContainer{
   border: 5px;
-  border-color: blue;
+  border-color: hsl(200, 40%, 60%);
   border-style: solid;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  
 }
 
 #outerBoxContainer{
@@ -30,4 +36,11 @@ button{
   padding:15px;
   margin-top: 10px;
   margin-bottom: 10px;
+  color: hsl(200, 40%, 45%);
+  background-color: hsl(220, 30%, 85%);
+  font-family: "Helvetica";
+}
+
+form{
+  font-family: "Arial";
 }
