@@ -1,0 +1,46 @@
+/*style sheet for login page */
+h1{
+  color:hsl(200,40%,45%);
+  padding-top:15px;
+  padding-left:25px;
+  padding-right: 25px;
+  font-family:"Helvetica";
+
+}
+
+#titleContainer{
+  border-bottom: 2px solid gray;
+  background-color: hsl(50, 40%, 60%);
+
+}
+
+#contentContainer{
+  border: 5px;
+  border-color: hsl(200, 40%, 60%);
+  border-style: solid;
+  padding-left: 0px;
+  padding-right: 0px;
+
+
+}
+
+#outerBoxContainer{
+    width: 35%;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom: 50px;
+    padding-top:50px;
+}
+
+button{
+  padding:15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: hsl(200, 40%, 45%);
+  background-color: hsl(220, 30%, 85%);
+  font-family: "Helvetica";
+}
+
+form{
+  font-family: "Arial";
+}
