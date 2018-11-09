@@ -6,7 +6,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="profileCreation.css">
 
     <title>Profile Creation Page</title>
   </head>
@@ -30,12 +30,17 @@
           </div>
 
 
-          <div class="container" id="loginContainer">
+          <div class="container" id="profileContainer">
 
             <form>
               <div class="form-group">
                 <label for="usr">Username</label>
                 <input type="text" class="form-control" name="username" id="usr" placeholder="Username">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
               </div>
 
               <div class="form-group">
@@ -45,12 +50,7 @@
 
               <div class="form-group">
                 <label for="cfmPasswrd">Confirm Password</label>
-                <input type="password" class="form-control" name="cfmPswd" id="cfmPasswrd" placeholder="CfmPassword">
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                <input type="password" class="form-control" name="cfmPswd" id="cfmPasswrd" placeholder="Confirm Password">
               </div>
             </form>
 
@@ -72,7 +72,7 @@
               <br>
             </div>
 
-            <button type="button" name="confirmationButton">Confirm</button>
+            <button type="button" name="createProfileButton">Create Profile</button>
 
           </div>
 
