@@ -31,6 +31,7 @@ app.use(flash());
 
 var login = require('./routes/login');
 app.use('/', login);
+app.use(express.static('public'));
 // var index = require('./routes/index');
 // var store = require('./routes/store');
 // app.use('/', index);
