@@ -2,17 +2,15 @@ var express = require('express');
 var router = express.Router();
 var expressValidator = require('express-validator');
 router.use(expressValidator());
-const { check } = require('express-validator/check')
+const { check } = require('express-validator/check');
+var db = require('../database.js');
 
 
 
 router.get('/', function (request, response) {
-   // render the views/login.ejs template file
+   // redirect from root route to /login route
    console.log("made it to root get route")
-   response.render('login', {
-    data: {}, 
-    
-    })
+   response.redirect('/login')
 });
 
 router.get('/login', function (request, response) {
@@ -25,9 +23,10 @@ router.get('/login', function (request, response) {
 });
 
 router.post('/login',[
-    //validate the email that's passed
+    //validate the email that's given
     check('usremail').isEmail().trim().normalizeEmail()
-    ], function(request, response){
+    ], 
+    function(request, response){
     //validate that email and password are not empty
     console.log("made it to login post route")
     request.assert('usremail', 'email is required').notEmpty();
@@ -35,7 +34,27 @@ router.post('/login',[
 
     var errors = request.validationErrors();
 
-    if(!errors){
+    if(!errors){//search db if no errors
+        //TODO: implement a password hashing function here!!!!!!!!!
+
+
+        //currently just entering the passwordID in the password field to test
+        //functionality. 
+        var cleanedData = { 
+            email: request.sanitize('usremail').escape().trim(), 
+            password: request.sanitize('pswd').escape().trim()
+        };
+
+        console.log('cleanedData: email=' + cleanedData.email + ' password='+cleanedData.password);
+
+        var query = 'select (email, pwdID) from users where(email= $1 and pwdID = $2)';
+        //expect one row from the query
+        db.one(query, [cleanedData.email, cleanedData.password]).then(function(result){
+            response.render('success')
+        }).catch(function (err){
+            request.flash('error', err);
+            response.render('login', {data:request.body})
+        })
 
 
     }
@@ -43,6 +62,7 @@ router.post('/login',[
         var error_msg = errors.reduce((accumulator, current_error) => accumulator + '<br/>' + current_error.msg, '');
         request.flash('error', error_msg);
         response.render('login', {
+            //keep data from email form so user doesn't have to retype it
             data: request.body
         })
 

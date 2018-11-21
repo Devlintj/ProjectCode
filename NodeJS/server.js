@@ -32,9 +32,11 @@ app.use(flash());
 var router = express.Router();
 
 var login = require('./routes/login');
+var success =  require('./routes/success');
 app.use('/', login);
 app.use(express.static('public'));
 app.use('/login', login);
+app.use('/success', success);
 
 
 //error handling

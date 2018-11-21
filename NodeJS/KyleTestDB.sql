@@ -42,7 +42,7 @@ primary key (courseID)
 CREATE TABLE if not exists enrollment(
 usrID integer not null,
 courseID integer not null,
-foreign key (sID),
+foreign key (usrID),
 foreign key (courseID)
 );
 
