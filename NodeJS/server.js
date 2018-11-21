@@ -29,13 +29,28 @@ app.use(session({
 }));
 app.use(flash());
 
+var router = express.Router();
+
 var login = require('./routes/login');
 app.use('/', login);
 app.use(express.static('public'));
+app.use('/login', login);
 // var index = require('./routes/index');
 // var store = require('./routes/store');
 // app.use('/', index);
 // app.use('/store', store);
+
+
+//error handling
+app.use((req, res, next) => {
+  res.status(404).send("Sorry can't find that!")
+})
+
+app.use((err, req, res, next) =>{
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+
 
 var port = 4000;
 app.listen(port, function () {
