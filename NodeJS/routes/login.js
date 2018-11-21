@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var expressValidator = require('express-validator');
+router.use(expressValidator());
+const { check } = require('express-validator/check')
+
+
 
 router.get('/', function (request, response) {
    // render the views/login.ejs template file
@@ -19,7 +24,10 @@ router.get('/login', function (request, response) {
     })
 });
 
-router.post('/login', function(request, response){
+router.post('/login',[
+    //validate the email that's passed
+    check('usremail').isEmail().trim().normalizeEmail()
+    ], function(request, response){
     //validate that email and password are not empty
     console.log("made it to login post route")
     request.assert('usremail', 'email is required').notEmpty();

@@ -35,10 +35,6 @@ var login = require('./routes/login');
 app.use('/', login);
 app.use(express.static('public'));
 app.use('/login', login);
-// var index = require('./routes/index');
-// var store = require('./routes/store');
-// app.use('/', index);
-// app.use('/store', store);
 
 
 //error handling
