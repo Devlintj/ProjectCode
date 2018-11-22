@@ -33,10 +33,14 @@ var router = express.Router();
 
 var login = require('./routes/login');
 var success =  require('./routes/success');
+var profileCreation = require('./routes/profileCreation');
+
 app.use('/', login);
 app.use(express.static('public'));
 app.use('/login', login);
 app.use('/success', success);
+app.use('/profileCreation', profileCreation);
+
 
 
 //error handling

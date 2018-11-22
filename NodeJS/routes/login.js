@@ -50,7 +50,7 @@ router.post('/login',[
         var query = 'select (email, pwdID) from users where(email= $1 and pwdID = $2)';
         //expect one row from the query
         db.one(query, [cleanedData.email, cleanedData.password]).then(function(result){
-            response.render('success')
+            response.redirect('/success')
         }).catch(function (err){
             request.flash('error', err);
             response.render('login', {data:request.body})
