@@ -1,11 +1,11 @@
 #calendar-container
 {
 	padding: 10px;
-	width: 400px;
-	height: 400px;
+	width: 975px;
+	height: 900px;
 	text-align: center;
 	border: 1px solid #eee;
-	border-radius: 10px;
+	border-radius: 30px;
 	font-size: 40px;
 	font-family: Arial;
 	background-image: linear-gradient(#fff, #ffd700);
@@ -13,16 +13,36 @@
 
 #calendar-container>div
 {
-	padding:0;
+	padding:0px;
 	margin-bottom: 10px;
 }
 
 #calendar-month-year
 {
-	margin: 5px;
+	margin: 10px;
 }
 
 #calendar-dates>table>tr>td
 {
+	padding: 45px;
+	
+	outline-style: solid;
+	outline-color: black;
+	outline-offset: 1px;
+}
+
+#prev
+{
+	float: left;
+	margin: 15px;
 	padding: 5px;
+	font-size: 20px;
+}
+
+#next
+{
+	float: right;
+	margin: 15px;
+	padding: 5px;
+	font-size: 20px;
 }

@@ -74,3 +74,80 @@ function get_calendar(day_no, days){
     }
     return table;
 }
+
+function nextMonth()
+{
+	var now = new Date();
+	var current;
+	/*if(now.getMonth() == 11)
+	{
+		current = new Date(now.getFullYear()+1, 0, 1);
+	}
+	else
+	{
+		current = new Date(now.getFullYear(),now.getMonth()+1, 1);
+	}*/
+	var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+	current = String(document.getElementById("calendar-month-year"));
+	var i = 0;
+	var month = -1;
+	while(i < 12)
+	{
+		month = current.includes(String(month_name[i]), 0);
+		if(month == true)
+		{
+			month = i;
+			break;
+		}
+		i++;
+	}
+    var year = Number(current.substring(current.length - 5, current.length));
+    if(month == 11)
+    {
+    	month = 0;
+    	year++;
+    }
+    var first_date = month_name[month] + " " + 1 + " " + year;
+    var tmp = new Date(first_date).toDateString();
+    var first_day = tmp.substring(0,3);
+    //November 1 2018
+    //var tmp = new Date(first_date).toDateString();
+    //Thu Nov 01 2018
+    //var first_day = tmp.substring(0, 3);    //Mon
+    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var day_no = day_name.indexOf(first_day);   //1
+    var days = new Date(year, month+1, 0).getDate();    //30
+    //Fri Nov 30 2018
+    var calendar = get_calendar(day_no, days);
+    document.getElementById("calendar-month-year").innerHTML = month_name[month]+" "+year;
+    document.getElementById("calendar-dates").appendChild(calendar);
+}
+
+function prevMonth()
+{
+	var now = new Date();
+	var current;
+	if(now.getMonth() == 0)
+	{
+		current = new Date(now.getFullYear()+1, 11, 1);
+	}
+	else
+	{
+		current = new Date(now.getFullYear(), now.getMonth()-1, 1);
+	}
+	var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var month = current.getMonth();   //0-11
+    var year = current.getFullYear(); //2018
+    var first_date = month_name[month] + " " + 1 + " " + year;
+    //November 1 2018
+    var tmp = new Date(first_date).toDateString();
+    //Thu Nov 01 2018
+    var first_day = tmp.substring(0, 3);    //Mon
+    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var day_no = day_name.indexOf(first_day);   //1
+    var days = new Date(year, month+1, 0).getDate();    //30
+    //Fri Nov 30 2018
+    var calendar = get_calendar(day_no, days);
+    document.getElementById("calendar-month-year").innerHTML = month_name[month]+" "+year;
+    document.getElementById("calendar-dates").appendChild(calendar);
+}
