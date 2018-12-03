@@ -4,6 +4,28 @@
 		<title>Calendar</title>
 		<link type="text/css" rel="stylesheet" href="style.css">
 		<script type="text/javascript" src="script.js"></script>
+		<!--Added line(s)-->
+		<script src="side_script.js"></script>
+		<script type="text/javascript">
+    	$(document).ready(function(){   
+        	$.getJSON('weekendtask.json', function(data) {
+        	var res=""
+			$.each(data.Buttons, function(key, button){
+				$.each(button.Conditions,function(key,condition){
+					res+="<li>"
+					res+='<input type="button" value="'+ condition.BButtonText.TText +
+						'" onclick="' + condition.JavaScriptAction.Text+
+						'" style="background-color:'+condition.Colors.BGColor+'; color:'+condition.Colors.FontColor+
+						'"/>'
+					res+="<\/li>"
+				})
+			})
+			$(res).appendTo('#ulObj')
+       		});             
+        	});
+    	window.onload = function(){ alert("welcome"); }
+		</script>
+		<!--End Added line(s)-->
 	</head>
 
 	<body>
