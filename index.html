@@ -7,23 +7,69 @@
 		<!--Added line(s)-->
 		<script src="side_script.js"></script>
 		<script type="text/javascript">
-    	$(document).ready(function(){   
-        	$.getJSON('weekendtask.json', function(data) {
-        	var res=""
-			$.each(data.Buttons, function(key, button){
-				$.each(button.Conditions,function(key,condition){
-					res+="<li>"
-					res+='<input type="button" value="'+ condition.BButtonText.TText +
-						'" onclick="' + condition.JavaScriptAction.Text+
-						'" style="background-color:'+condition.Colors.BGColor+'; color:'+condition.Colors.FontColor+
-						'"/>'
-					res+="<\/li>"
-				})
-			})
-			$(res).appendTo('#ulObj')
-       		});             
-        	});
-    	window.onload = function(){ alert("welcome"); }
+    		var data={
+    			"Caption": "Moduel caption",
+    			"IconsDirectiry": "C://Images/",
+    			"Buttons": [{
+    				"Conditions": [{
+    					"ConditionText": "1==1",
+    					"ButtonText": "Text1",
+    					"Visible": true,
+    					"Colors": {
+    						"FrontColor": "#FFFFFF",
+    						"BGColor": "#669933"
+    					},
+    					"BBottonText": {
+    						"TText": "Add Event"
+    					},
+    					"Size": {
+    						"Width": 200,
+    						"Height": 50
+    					},
+    					"Url": {
+    						"UrlAddress": "http:/www.google.com",
+    						"OpenNewWindow": true
+    					},
+    					"JavaScriptAction": {
+    						"Text": "alert('working!');"
+    					}
+    				}, {
+    					"ConditionText": "2==2",
+    					"ButtonText": "Text2",
+    					"Visible": true,
+    					"Colors": {
+    						"FrontColor": "#FFFFFF",
+    						"BGColor": "#669933"
+    					},
+    					"BBottonText": {
+    						"TText": "Add Class"
+    					},
+    					"Size": {
+    						"Width": 200,
+    						"Height": 50
+    					},
+    					"Url": {
+    						"UrlAddress": "http:/www.google.com",
+    						"OpenNewWindow": true
+    					},
+    					"JavaScriptAction": {
+    						"Text": "alert('working!');"
+    					}
+    				}]
+    			}]
+    		}
+    		$(function(){
+    			var res=""
+    			$.each(data.Buttons, function(key, button){
+    				$.each(button.Conditions, function(key, condition){
+    				//	console.log(condition)
+    					res+="<li>"
+    					res+='<input type="button" value="'+ condition.BButtonText.TText + '" onclick="' + condition.JavaScriptAction.Text + '"style="background-color:' + condition.Colors.BGColor+'; color:' + condition.Colors. FrontColor + '"/>'
+    					res+="<\/li>"
+    				})
+    			})
+    			$(res).appendTo('#ulObj')
+    		}
 		</script>
 		<!--End Added line(s)-->
 	</head>
@@ -39,5 +85,12 @@
 			<div id="calendar-dates">
 			</div>
 		</div>
+		<div>
+		    <ul id='ulObj'>
+			    <li>1</li>
+			    <li>2</li>
+			    <li>3</li>
+		    </ul>
+	    </div>
 	</body>
 </html>
