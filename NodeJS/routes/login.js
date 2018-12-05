@@ -5,6 +5,35 @@ router.use(expressValidator());
 const { check } = require('express-validator/check');
 var db = require('../database.js');
 
+//code to allow python calls
+var myPythonScriptPath = 'dbHandler.py'
+//import {PythonShell}
+// Use python shell
+let {PythonShell} = require('python-shell');
+var pyshell = new PythonShell(myPythonScriptPath);
+
+pyshell.on('message', function (message) {
+    // received a message sent from the Python script (a simple "print" statement)
+    console.log(message);
+    if(message === 'Inside python script'){
+      console.log('I read the python output')
+    }
+});
+
+// end the input stream and allow the process to exit
+pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+
+    console.log('finished');
+});
+
+
+
+
+
+
 
 
 router.get('/', function (request, response) {
