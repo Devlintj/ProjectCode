@@ -33,8 +33,9 @@ var router = express.Router();
 
 //code to allow python calls
 var myPythonScriptPath = 'dbHandler.py'
+//import {PythonShell}
 // Use python shell
-var PythonShell = require('python-shell');
+let {PythonShell} = require('python-shell');
 var pyshell = new PythonShell(myPythonScriptPath);
 
 pyshell.on('message', function (message) {
