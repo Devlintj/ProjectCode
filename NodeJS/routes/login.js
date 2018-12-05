@@ -38,13 +38,13 @@ pyshell.end(function (err) {
 
 router.get('/', function (request, response) {
    // redirect from root route to /login route
-   console.log("made it to root get route")
-   response.redirect('/login')
+   console.log("made it to root get route");
+   response.redirect('/login');
 });
 
 router.get('/login', function (request, response) {
    // render the views/login.ejs template file
-   console.log("made it to login get route")
+   console.log("made it to login get route");
    response.render('login', {
      //initialize data variable to be empty
      //data is used to store the information from the html forms

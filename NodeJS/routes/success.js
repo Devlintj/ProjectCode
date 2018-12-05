@@ -6,7 +6,7 @@ router.get('/', function (request, response) {
   var validationString = request.query.valid;
   if(validationString === 'success' ){
    console.log('Made it to success root route');
-   response.render('success')
+   response.redirect('/calendar')
  }
  else{
     response.redirect('/login')
