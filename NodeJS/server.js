@@ -31,6 +31,9 @@ app.use(flash());
 
 var router = express.Router();
 
+//code to allow python calls
+var myPythonScriptPath = 'dbHandler.py'
+
 var login = require('./routes/login');
 var success =  require('./routes/success');
 var profileCreation = require('./routes/profileCreation');

@@ -17,15 +17,15 @@ router.get('/login', function (request, response) {
    // render the views/login.ejs template file
    console.log("made it to login get route")
    response.render('login', {
-    data: {}, 
-    
+    data: {},
+
     })
 });
 
 router.post('/login',[
     //validate the email that's given
     check('usremail').isEmail().trim().normalizeEmail()
-    ], 
+    ],
     function(request, response){
     //validate that email and password are not empty
     console.log("made it to login post route")
@@ -39,9 +39,9 @@ router.post('/login',[
 
 
         //currently just entering the passwordID in the password field to test
-        //functionality. 
-        var cleanedData = { 
-            email: request.sanitize('usremail').escape().trim(), 
+        //functionality.
+        var cleanedData = {
+            email: request.sanitize('usremail').escape().trim(),
             password: request.sanitize('pswd').escape().trim()
         };
 
@@ -50,7 +50,8 @@ router.post('/login',[
         var query = 'select (email, pwdID) from users where(email= $1 and pwdID = $2)';
         //expect one row from the query
         db.one(query, [cleanedData.email, cleanedData.password]).then(function(result){
-            response.redirect('/success')
+          var string = encodeURIComponent('success')
+            response.redirect('/success?valid='+string)
         }).catch(function (err){
             request.flash('error', err);
             response.render('login', {data:request.body})
