@@ -2,4 +2,9 @@
 #need psycopg library for this code to work
 
 #conn = psycopg2.connect("dbname=kyletestdb user=postgres password=")
-print("Inside python script")
+
+
+def main():
+    print("Inside python script")
+if __name__ == '__main__':
+    main()
