@@ -53,7 +53,7 @@ router.post('/login',[
           var string = encodeURIComponent('success')
             response.redirect('/success?valid='+string)
         }).catch(function (err){
-            request.flash('error', err);
+            request.flash('error', 'Login Failed');
             response.render('login', {data:request.body})
         })
 
