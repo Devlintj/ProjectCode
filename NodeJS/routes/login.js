@@ -17,6 +17,8 @@ router.get('/login', function (request, response) {
    // render the views/login.ejs template file
    console.log("made it to login get route")
    response.render('login', {
+     //initialize data variable to be empty
+     //data is used to store the information from the html forms
     data: {},
 
     })
