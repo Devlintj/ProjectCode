@@ -21,6 +21,7 @@ window.onload = function(){
     currentCalendar = get_calendar(day_no, days);
     document.getElementById("calendar-month-year").innerHTML = month_name[month]+" "+year;
     document.getElementById("calendar-dates").appendChild(currentCalendar); 
+    
 }
 
 function get_calendar(day_no, days){
@@ -132,3 +133,6 @@ function prevMonth()
     document.getElementById("calendar-dates").replaceChild(calendar, currentCalendar); 
     currentCalendar = calendar;
 }
+
+
+

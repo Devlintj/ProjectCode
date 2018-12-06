@@ -2,7 +2,7 @@
 {
 	padding: 10px;
 	width: 975px;
-	height: 900px;
+	height: 950px;
 	text-align: center;
 	border: 1px solid #eee;
 	border-radius: 30px;
@@ -29,6 +29,8 @@
 	outline-style: solid;
 	outline-color: black;
 	outline-offset: 1px;
+	background-image: linear-gradient(#fff, #ffd700);
+
 }
 
 #prev
