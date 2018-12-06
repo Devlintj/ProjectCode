@@ -9,6 +9,10 @@ router.get('/', function (request, response) {
    // redirect from root route to /login route
    console.log("made it to calendar root get route");
    //idea make an array of dates that have assignments on them
+   var requestedMonth = request.query.currentMonth;
+   var requestedYear = request.query.currentYear;
+   console.log(requestedMonth, ' ', requestedYear);
+
    response.render('index');
 
 });

@@ -6,7 +6,11 @@ router.get('/', function (request, response) {
   var validationString = request.query.valid;
   if(validationString === 'success' ){
    console.log('Made it to success root route');
-   response.redirect('/calendar')
+   var now = new Date();
+   var currentMonth = encodeURIComponent(now.getMonth() + 1);
+   var currentYear = encodeURIComponent(now.getFullYear());
+
+   response.redirect('/calendar?currentMonth='+currentMonth+'&currentYear='+currentYear);
  }
  else{
     response.redirect('/login')
