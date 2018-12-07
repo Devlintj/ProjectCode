@@ -49,5 +49,12 @@ dueDate date not null,
 description text,
 );
 
+#creates a table with the events the student has based on the course they're enrolled in
+SELECT *
+FROM student S
+JOIN events EV
+ON S.courseID=EV.courseID;
+
+
 
 		
