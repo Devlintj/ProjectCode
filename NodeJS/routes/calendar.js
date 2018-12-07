@@ -11,10 +11,19 @@ router.get('/', function (request, response) {
    //idea make an array of dates that have assignments on them
    var requestedMonth = request.query.currentMonth;
    var requestedYear = request.query.currentYear;
+   // var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
    console.log(requestedMonth, ' ', requestedYear);
+   //get the assignments from a query here and pass it to the html
 
-   response.render('index');
+   response.render('index', {
+    month:requestedMonth, 
+    year:requestedYear, 
+    
+   });
 
 });
+
+
+
 
 module.exports = router;

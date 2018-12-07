@@ -1,14 +1,16 @@
 var now = new Date();
-var currMonth = now.getMonth();
-var currYear = now.getFullYear();
+console.log(document.getElementById("passedMonth").textContent);
+var currMonth = parseInt(document.getElementById("passedMonth").textContent, 10);
+var currYear = parseInt(document.getElementById("passedYear").textContent, 10);
 var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var currentCalendar;
 
 
 window.onload = function(){
+    console.log('onloading window');
     var d = new Date();
-    var month = d.getMonth();   //0-11
-    var year = d.getFullYear(); //2018
+    var month = currMonth
+    var year = currYear //2018
     var first_date = month_name[month] + " " + 1 + " " + year;
     //November 1 2018
     var tmp = new Date(first_date).toDateString();
@@ -19,9 +21,47 @@ window.onload = function(){
     var days = new Date(year, month+1, 0).getDate();    //30
     //Fri Nov 30 2018
     currentCalendar = get_calendar(day_no, days);
+    //console.log(month_name[month]);
     document.getElementById("calendar-month-year").innerHTML = month_name[month]+" "+year;
     document.getElementById("calendar-dates").appendChild(currentCalendar); 
+
+    console.log(currMonth);
+    console.log(currYear);
+
+
+
+    //set the values for the next and previous month and the attribute for what url to post it to
+    var nextMonth;
+    var nextYear;
+    if(currMonth === 11){
+        nextMonth = 0;
+        nextYear = currYear + 1
+
+    }
+    else{
+        nextMonth = currMonth + 1;
+        nextYear = currYear
+    }
     
+
+    var string = '/calendar?currentMonth='+nextMonth+'&currentYear='+nextYear;;
+    console.log(string);
+    document.getElementById("next").value = '/calendar?currentMonth='+nextMonth+'&currentYear='+nextYear;
+
+    var prevMonth;
+    var prevYear;
+    if(currMonth === 0){
+        prevMonth = 11;
+        prevYear = currYear - 1;
+    }
+    else{
+        prevMonth = currMonth - 1;
+        prevYear = currYear;
+    }
+    string = '/calendar?currentMonth='+prevMonth+'&currentYear='+prevYear;
+    console.log(string);
+    document.getElementById("prev").value = '/calendar?currentMonth='+prevMonth+'&currentYear='+prevYear;
+
 }
 
 function get_calendar(day_no, days){
@@ -84,54 +124,81 @@ function get_calendar(day_no, days){
 
 function nextMonth()
 {
-	var current;
-	if(currMonth == 11)
-	{
-		currMonth = 0;
-		currYear++;
-	}
-	else
-	{
-		currMonth++;
-	}
-	var first_date = month_name[currMonth] + " " + 1 + " " + currYear;
-	var tmp = new Date(first_date).toDateString();
-    //Thu Nov 01 2018
-    var first_day = tmp.substring(0, 3);    //Mon
-    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    var day_no = day_name.indexOf(first_day);   //1
-    var days = new Date(currYear, currMonth+1, 0).getDate();    //30
-    //Fri Nov 30 2018
-    var calendar = get_calendar(day_no, days);
-    document.getElementById("calendar-month-year").innerHTML = month_name[currMonth]+" "+currYear;
-    document.getElementById("calendar-dates").replaceChild(calendar, currentCalendar); 
-    currentCalendar = calendar;
+	// var current;
+	// if(currMonth == 11)
+	// {
+	// 	currMonth = 0;
+	// 	currYear++;
+	// }
+	// else
+	// {
+	// 	currMonth++;
+	// }
+	// var first_date = month_name[currMonth] + " " + 1 + " " + currYear;
+	// var tmp = new Date(first_date).toDateString();
+ //    //Thu Nov 01 2018
+ //    var first_day = tmp.substring(0, 3);    //Mon
+ //    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+ //    var day_no = day_name.indexOf(first_day);   //1
+ //    var days = new Date(currYear, currMonth+1, 0).getDate();    //30
+ //    //Fri Nov 30 2018
+ //    var calendar = get_calendar(day_no, days);
+ //    document.getElementById("calendar-month-year").innerHTML = month_name[currMonth]+" "+currYear;
+ //    document.getElementById("calendar-dates").replaceChild(calendar, currentCalendar); 
+ //    currentCalendar = calendar;
+
+
+
+    //moving this code to the onload function so when the buttons are pressed the 
+    //set the proper get string for the button form 
+    //handle case for begining a new year
+    // var nextMonth;
+    // var nextYear;
+    // if(currMonth === 11){
+    //     nextMonth = 0;
+    //     nextYear = currYear + 1
+
+    // }
+    // else{
+    //     nextMonth = currMonth + 1;
+    //     nextYear = currYear
+    // }
+
+    // document.getElementById("nxtMonthForm").action = '/calendar?currentMonth='+nextMonth+'&currentYear='+nextYear;
+    document.getElementById("nxtMonthForm").submit();
+    
+
 }
 
 function prevMonth()
 {
-	var current;
-	if(currMonth == 0)
-	{
-		currMonth = 11;
-		currYear--;
-	}
-	else
-	{
-		currMonth--;
-	}
-	var first_date = month_name[currMonth] + " " + 1 + " " + currYear;
-	var tmp = new Date(first_date).toDateString();
-    //Thu Nov 01 2018
-    var first_day = tmp.substring(0, 3);    //Mon
-    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    var day_no = day_name.indexOf(first_day);   //1
-    var days = new Date(currYear, currMonth+1, 0).getDate();    //30
-    //Fri Nov 30 2018
-    var calendar = get_calendar(day_no, days);
-    document.getElementById("calendar-month-year").innerHTML = month_name[currMonth]+" "+currYear;
-    document.getElementById("calendar-dates").replaceChild(calendar, currentCalendar); 
-    currentCalendar = calendar;
+	// var current;
+	// if(currMonth == 0)
+	// {
+	// 	currMonth = 11;
+	// 	currYear--;
+	// }
+	// else
+	// {
+	// 	currMonth--;
+	// }
+	// var first_date = month_name[currMonth] + " " + 1 + " " + currYear;
+	// var tmp = new Date(first_date).toDateString();
+ //    //Thu Nov 01 2018
+ //    var first_day = tmp.substring(0, 3);    //Mon
+ //    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+ //    var day_no = day_name.indexOf(first_day);   //1
+ //    var days = new Date(currYear, currMonth+1, 0).getDate();    //30
+ //    //Fri Nov 30 2018
+ //    var calendar = get_calendar(day_no, days);
+ //    document.getElementById("calendar-month-year").innerHTML = month_name[currMonth]+" "+currYear;
+ //    document.getElementById("calendar-dates").replaceChild(calendar, currentCalendar); 
+ //    currentCalendar = calendar;
+
+    document.getElementById("prvMonthForm").submit();
+
+
+
 }
 
 

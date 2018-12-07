@@ -7,7 +7,7 @@ router.get('/', function (request, response) {
   if(validationString === 'success' ){
    console.log('Made it to success root route');
    var now = new Date();
-   var currentMonth = encodeURIComponent(now.getMonth() + 1);
+   var currentMonth = encodeURIComponent(now.getMonth());
    var currentYear = encodeURIComponent(now.getFullYear());
 
    response.redirect('/calendar?currentMonth='+currentMonth+'&currentYear='+currentYear);
