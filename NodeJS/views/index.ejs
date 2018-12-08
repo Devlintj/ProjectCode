@@ -6,6 +6,7 @@
 		to this ejs and from this ejs to sctipt.js -->
 		<style id="passedMonth"> <%= month %> </style>
 		<title id="passedYear"> <%=year %> </title>
+
 		<link type="text/css" rel="stylesheet" href="style.css">
 		<script type="text/javascript" src="script.js"></script>
 	</head>
@@ -17,17 +18,22 @@
 
 				<!-- the action attribute sets the html to be rendered by the form -->
 				
-            	<form method="get" action="/calendar" id="prvMonthForm">
+            	<!-- <form method="get" action="/calendar" id="prvMonthForm">
             		<input type="hidden" name="prevName" id = "prev" value="" /> 
 					<button onClick = "prevMonth()"  type="submit"> prev </button>
 				</form>
 				<form method="get" action="/calendar" id="nxtMonthForm">
 					<input type="hidden" name="nextName" id = "next" value=""/> 
 					<button onClick = "nextMonth()" type="button"> next </button>
-				</form>
+				</form> -->
 
 
-				<a href="/calendar?currentMonth=10&currentYear=2018">TEST</a>
+
+
+				<!-- <a href="/calendar?currentMonth=10&currentYear=2018">Prev</a> -->
+
+				<a href="/calendar" id="prev">Prev</a>
+				<a href="/calendar" id="next">Next</a>
 
 
 			</div>

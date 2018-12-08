@@ -16,9 +16,10 @@ isProff boolean,
 primary key (usrID) 
 );
 
-Insert into users(usrID, fName, lName, email, pwdID, course1ID, course2ID, course3ID, isProff)
+Insert into users(usrID, fName, lName, email, pwdID, isProff)
 values (1, 'John', 'Doe', 'jd@gmail.com', 44, 100, 200, 300, false), 
 (2, 'Johnny', 'Appleseed', 'japplZ@gmail.com', 78, 200, 350, 400, false);
+
 
 Insert into users(usrID, fName, lName, email, pwdID, course1ID, course2ID, course3ID, course4ID, course5ID, isProff)
 values(3, 'Ligma', 'Sphere', 'lsph3r3@gmail.com', 32, 100, 200, 300, 350, 400, true);
