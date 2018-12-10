@@ -50,7 +50,8 @@ router.get('/', function (request, response) {
    response.render('index', {
     month:requestedMonth, 
     year:requestedYear, 
-
+    userid: usrid, 
+    usertype: isproff
    });
 
 });
