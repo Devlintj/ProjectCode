@@ -49,15 +49,47 @@ router.post('/login',[
 
         console.log('cleanedData: email=' + cleanedData.email + ' password='+cleanedData.password);
 
-        var query = 'select (email, pwdID) from users where(email= $1 and pwdID = $2)';
+        var query = 'select * from users where(email= $1 and pwdID = $2)';
         //expect one row from the query
-        db.one(query, [cleanedData.email, cleanedData.password]).then(function(result){
+        db.one(query, [cleanedData.email, cleanedData.password]).then(function(row){
+            //not properly getting the user id as a result from the query
+            console.log(row)
+            // console.log(row.usrid)
+            // console.log(row[0])
+            console.log('Break')
+            console.log(row.isproff)
+            console.log(typeof row.isproff)
           var string = encodeURIComponent('success')
-            response.redirect('/success?valid='+string)
+          var userId = encodeURIComponent(row.usrid)
+          var isProff
+          if(row.isproff == false){
+            isProff = encodeURIComponent(false)
+          }
+          else{
+            isProff = encodeURIComponent(true)
+          }
+          
+            response.redirect('/success?valid='+string+'&usrid='+userId+'&isproff='+isProff);
         }).catch(function (err){
             request.flash('error', 'Login Failed');
             response.render('login', {data:request.body})
         })
+
+
+        //var query = select (usrid, isProff) from users where(email= $1 and pwdID = $2)
+        //db.one(query, [cleanedData.email, cleanedData.password]).then(function(row){
+        //     //not properly getting the user id as a result from the query
+        //     // console.log(row)
+        //     // console.log(row.usrid)
+        //     // console.log(row[0])
+        //   var string = encodeURIComponent('success')
+        //   var userId = encodeURIComponent(row.usrID)
+        //   var isProff = encodeURIComponent(row.isProff)
+        //     response.redirect('/success?valid='+string+'&usrid='+userId+'isProff='+isProff);
+        // }).catch(function (err){
+        //     request.flash('error', 'Login Failed');
+        //     response.render('login', {data:request.body})
+        // })
 
 
     }

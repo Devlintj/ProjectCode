@@ -101,9 +101,9 @@ function get_calendar(day_no, days){
     for(; c<=6; c++){
         var td = document.createElement('td');
         var dayString = count.toString();
-        //var linkAddress = "/calendar?currentMonth="+8&currentYear=2017
+        // var linkAddress = "/calendar?currentMonth="+8+"&currentYear="+
         td.innerHTML = dayString.link("/calendar?currentMonth=8&currentYear=2017");
-        //td.innerHTML.link("/calendar");
+
 
         count++;
         tr.appendChild(td);
