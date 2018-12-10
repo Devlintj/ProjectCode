@@ -102,6 +102,7 @@ function get_calendar(day_no, days){
         var td = document.createElement('td');
         var dayString = count.toString();
         // var linkAddress = "/calendar?currentMonth="+8+"&currentYear="+
+        //link the days to the student or professor html pages
         td.innerHTML = dayString.link("/calendar?currentMonth=8&currentYear=2017");
 
 
