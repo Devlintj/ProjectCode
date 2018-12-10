@@ -31,13 +31,7 @@
 
 
           <div class="container" id="profileContainer">
-
-            <form>
-              <div class="form-group">
-                <label for="usr">Username</label>
-                <input type="text" class="form-control" name="username" id="usr" placeholder="Username">
-              </div>
-
+          <form method="post" action="/profileCreation">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email">
@@ -52,27 +46,23 @@
                 <label for="cfmPasswrd">Confirm Password</label>
                 <input type="password" class="form-control" name="cfmPswd" id="cfmPasswrd" placeholder="Confirm Password">
               </div>
-            </form>
+            
 
-            <div class="radio">
-              <label>Gender</label>
-              <br>
-              <label style="font-weight:normal"><input type="radio">Female</label>
-              <br>
-              <label style="font-weight:normal"><input type="radio">Male</label>
-              <br>
-            </div>
-
-            <div class="radio">
+            <!-- <div class="radio">
               <label>Role</label>
               <br>
               <label style="font-weight:normal"><input type="radio">Student</label>
               <br>
               <label style="font-weight:normal"><input type="radio">Professor</label>
               <br>
-            </div>
+            </div> -->
 
-            <button type="button" name="createProfileButton">Create Profile</button>
+          
+
+            <button type="submit" name="createProfileButton" >Create Profile</button>
+
+
+            </form>
 
           </div>
 
