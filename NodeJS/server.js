@@ -45,7 +45,7 @@ app.use(express.static('public'));
 app.use('/', login);
 app.use('/login', login);
 app.use('/success', success);
-app.use('/profilecreation', profileCreation);
+app.use('/profileCreation', profileCreation);
 app.use('/calendar', calendar);
 app.use('/student', student);
 app.use('/professor', professor);
