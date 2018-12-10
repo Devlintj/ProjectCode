@@ -50,8 +50,6 @@ router.get('/', function (request, response) {
    response.render('index', {
     month:requestedMonth, 
     year:requestedYear, 
-    usrid: usrid,
-    isproff: isproff
 
    });
 

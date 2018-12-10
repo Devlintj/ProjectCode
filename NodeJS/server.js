@@ -36,9 +36,6 @@ var login = require('./routes/login');
 var success =  require('./routes/success');
 var profileCreation = require('./routes/profileCreation');
 var calendar = require('./routes/calendar');
-var student = require('./routes/student');
-var professor = require('./routes/professor');
-
 
 app.use('/', login);
 app.use(express.static('public'));
@@ -46,8 +43,6 @@ app.use('/login', login);
 app.use('/success', success);
 app.use('/profileCreation', profileCreation);
 app.use('/calendar', calendar);
-app.use('/student', student);
-app.use('/professor', professor);
 
 
 
