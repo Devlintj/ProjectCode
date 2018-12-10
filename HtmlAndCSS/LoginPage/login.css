@@ -11,7 +11,7 @@ h1{
 #titleContainer{
   border-bottom: 2px solid gray;
   background-color: hsl(50, 40%, 60%);
-  
+
 }
 
 #contentContainer{
@@ -21,7 +21,7 @@ h1{
   padding-left: 0px;
   padding-right: 0px;
 
-  
+
 }
 
 #outerBoxContainer{
