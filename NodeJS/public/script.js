@@ -2,6 +2,8 @@ var now = new Date();
 console.log(document.getElementById("passedMonth").textContent);
 var currMonth = parseInt(document.getElementById("passedMonth").textContent, 10);
 var currYear = parseInt(document.getElementById("passedYear").textContent, 10);
+var userType = document.getElementById("isproff").textContent;
+var usrid = parseInt(document.getElementById("usrid").textContent, 10);
 var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var currentCalendar;
 
@@ -103,7 +105,12 @@ function get_calendar(day_no, days){
         var dayString = count.toString();
         // var linkAddress = "/calendar?currentMonth="+8+"&currentYear="+
         //link the days to the student or professor html pages
-        td.innerHTML = dayString.link("/calendar?currentMonth=8&currentYear=2017");
+        if(userType == 'false'){
+            td.innerHTML = dayString.link("/student");
+        }
+        else{
+            td.innerHTML = dayString.link("/professor");
+        }
 
 
         count++;
