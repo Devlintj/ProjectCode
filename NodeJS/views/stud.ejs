@@ -5,8 +5,8 @@
 <title>Events</title>
 </head>
 <body>
-<h1>Details for: "Date needs to appear here"</h1>
-<a href="index.html" onmouseover="style.color='gray'" onmouseout="style.color='blue'">Return to Calendar (this link needs to be fixed) </a></br>
+<h1><%='Assignments for '+passedmonth.toString()+'/'+passedday.toString()+'/'+passedyear.toString()%></h1>
+<a href=<%='calendar?currentMonth='+passedmonth.toString()+'&currentYear='+passedyear.toString()+'&usrid='+passedusrid.toString()+'&isproff='+passedisproff.toString()%> onmouseover="style.color='gray'" onmouseout="style.color='blue'">Return to Calendar (this link needs to be fixed) </a></br>
 <h3>Today's Event</h3>
 <table style="width:100%" border>
     <tr>

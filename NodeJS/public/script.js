@@ -64,8 +64,8 @@ window.onload = function(){
     }
     string = '/calendar?currentMonth='+prevMonth+'&currentYear='+prevYear;
     console.log(string);
-    document.getElementById("prev").href = '/calendar?currentMonth='+prevMonth+'&currentYear='+prevYear;
-    document.getElementById("next").href = '/calendar?currentMonth='+nextMonth+'&currentYear='+nextYear;
+    document.getElementById("prev").href = '/calendar?currentMonth='+prevMonth+'&currentYear='+prevYear+'&usrid='+usrid.toString()+'&isproff='+usertype.toString();
+    document.getElementById("next").href = '/calendar?currentMonth='+nextMonth+'&currentYear='+nextYear+'&usrid='+usrid.toString()+'&isproff='+usertype.toString();
     console.log(document.getElementById("prev").href);
 
 }
@@ -108,12 +108,16 @@ function get_calendar(day_no, days){
         // var linkAddress = "/calendar?currentMonth="+8+"&currentYear="+
         //link the days to the student or professor html pages
         //td.innerHTML = dayString.link("/calendar?currentMonth=8&currentYear=2017");
-
+        //console.log("MADE IT HERE");
+        var queryString = "?day="+dayString+"&month="+currMonth+"&year="+currYear+"&usrid="+usrid.toString()+"&isproff="+usertype;
         if(usertype === "false"){
-            td.innerHTML = dayString.link("/student");
+            queryString = "/student"+queryString;
+
+            td.innerHTML = dayString.link(queryString);
         }
         else{
-            td.innerHTML = dayString.link("/professor");
+            queryString = "/professor"+queryString;
+            td.innerHTML = dayString.link(queryString);
         }
 
 
@@ -130,8 +134,18 @@ function get_calendar(day_no, days){
                 table.appendChild(tr);
                 return table;
             }
+            var queryString = "?day="+dayString+"&month="+currMonth+"&year="+currYear+"&usrid="+usrid.toString()+"&isproff="+usertype;
             var td = document.createElement('td');
-            td.innerHTML = count;
+            var dayString = count.toString();
+            if(usertype === "false"){
+                queryString = "/student"+queryString;
+                td.innerHTML = dayString.link(queryString);
+            }
+            else{
+                queryString = "/professor"+queryString;
+                td.innerHTML = dayString.link(queryString);
+            }
+            //td.innerHTML = count;
             count++;
             tr.appendChild(td);
         }
