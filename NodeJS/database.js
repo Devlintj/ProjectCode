@@ -2,13 +2,7 @@
 //deploying to heroku
 var pgp = require('pg-promise')();
 
-const dbConfig = {
-   host: 'localhost',
-   port: 5432,
-   database: 'kyletestdb',
-   user: 'postgres',
-   password: '' 
-};
+const dbConfig = process.env.DATABASE_URL;
 
 var db = pgp(dbConfig);
 
