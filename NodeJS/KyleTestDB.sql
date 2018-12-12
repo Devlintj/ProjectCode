@@ -69,7 +69,7 @@ JOIN course C
 ON C.courseID=E.courseID
 where (u.usrID = 1);
 
-select (EV.dueDate) from users U Join enrollment E on u.usrID=E.usrID join course C on C.courseID=E.courseID join events EV on ev.courseID=C.courseID where (U.usrID = 1);
+select (EV.dueDate, EV.description, C.dept, C.courseNum) from users U Join enrollment E on u.usrID=E.usrID join course C on C.courseID=E.courseID join events EV on ev.courseID=C.courseID where (U.usrID = 1);
 
 
 
