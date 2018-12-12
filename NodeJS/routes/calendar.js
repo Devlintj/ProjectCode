@@ -71,7 +71,7 @@ router.get('/', function (request, response) {
       //only care about the Day since we already know what month and year we are dealing with. 
 
       //look through and get strings of dates with an assignment for out user
-      var size = length(dueDates);
+      var size = dueDates.length;
       var days = [];
       var dayStr;
       for(var i=0;i<size;i++){

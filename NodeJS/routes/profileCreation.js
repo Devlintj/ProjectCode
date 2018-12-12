@@ -8,7 +8,8 @@ var db = require('../database.js');
 
 
 router.post('/', function(request, response){
-  console.log("made it to profileCreation post route")
+  console.log("made it to profileCreation post route");
+  console.log(request.body);
   //response.render('profileCreation')
   request.assert('email', 'email is required').notEmpty();
    request.assert('pswd', 'password is required').notEmpty();
