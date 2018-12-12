@@ -39,8 +39,9 @@ router.post('/', function(request, response){
         day='0'+day;
     }
 
-
-    var date = year + '-' + month + '-' + day;
+    var correctedMonthInt = parseInt(month, 10) + 1;
+    correctedMonthStr = correctedMonthInt.toString();
+    var date = year + '-' + correctedMonthStr + '-' + day;
     console.log(date);
 
     var classid = request.sanitize('ClassID');
