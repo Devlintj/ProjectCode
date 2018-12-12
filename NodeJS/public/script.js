@@ -170,9 +170,10 @@ function get_calendar(day_no, days){
                 table.appendChild(tr);
                 return table;
             }
-            var queryString = "?day="+dayString+"&month="+currMonth+"&year="+currYear+"&usrid="+usrid.toString()+"&isproff="+usertype;
+            
             var td = document.createElement('td');
             var dayString = count.toString();
+            var queryString = "?day="+dayString+"&month="+currMonth+"&year="+currYear+"&usrid="+usrid.toString()+"&isproff="+usertype;
             if(usertype === "false"){
                 queryString = "/student"+queryString;
                 td.innerHTML = dayString.link(queryString);
