@@ -1,0 +1,51 @@
+
+<html>
+	<head>
+		<title>Calendar</title>
+		<!-- I am using these title tags as a makeshift way of passing data from calendar.js 
+		to this ejs and from this ejs to sctipt.js -->
+		<style id="passedMonth"> <%= month %> </style>
+		<style id="userid"> <%= userid %> </style>
+		<style id="usertype"><%= usertype %></style>
+
+		<title id="passedYear"> <%=year %> </title>
+
+
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="script.js"></script>
+	</head>
+
+	<body>
+		<div id="PassedData">
+			<p>  </p>
+		</div>
+		<div id="calendar-container">
+			<div id="calendar-header">
+				<span id="calendar-month-year"></span>
+
+				<!-- the action attribute sets the html to be rendered by the form -->
+				
+            	<!-- <form method="get" action="/calendar" id="prvMonthForm">
+            		<input type="hidden" name="prevName" id = "prev" value="" /> 
+					<button onClick = "prevMonth()"  type="submit"> prev </button>
+				</form>
+				<form method="get" action="/calendar" id="nxtMonthForm">
+					<input type="hidden" name="nextName" id = "next" value=""/> 
+					<button onClick = "nextMonth()" type="button"> next </button>
+				</form> -->
+
+
+
+
+				<!-- <a href="/calendar?currentMonth=10&currentYear=2018">Prev</a> -->
+
+				<a href="/calendar" id="prev">Prev</a>
+				<a href="/calendar" id="next">Next</a>
+
+
+			</div>
+			<div id="calendar-dates">
+			</div>
+		</div>
+	</body>
+</html>
