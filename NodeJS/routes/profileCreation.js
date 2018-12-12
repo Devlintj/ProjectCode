@@ -7,30 +7,45 @@ var db = require('../database.js');
 
 
 
-router.post('/profileCreation', function(request, response){
-  console.log("made it to profileCreation post route");
-  response.render('profileCreation');
-  //request.assert('email', 'email is required').notEmpty();
-  // request.assert('pswd', 'password is required').notEmpty();
-  // request.assert('cfmPswd', 'confirm password is required').notEmpty();
-  // request.assert('pswd', 'password and confirm password are not the same').equals('cfmPswd');
-  // var queryCheckEmailNotTaken = 'select (email) from users where(email = $1)';
-  // if(db.oneOrNone(queryCheckEmailNotTaken, 'email')=== null){
-  //   //make eroor message
-  //   request.flash('error', 'Creation failed');
-  //   response.render('profileCreation');
-  // }
-  // else{
-  //   var isProf = document.getElementById("isProfessor").checked;
-  //   //var dbQueryAddUserString = 'Insert into users(email, pswd, isProffessor) values(request.sanitize('email'), request.sanitize('pswd'), isProf;
-  //   var dbQueryAddUserString = 'Insert into users(email, pswdID, isProffessor) values($1, $2, $3)';
-  //   db.none(dbQueryAddUserString, [email,pswd, isProf]).then(
-  //       response.render('login')
-  //       ).catch(function(error){
-  //           request.flash('error', 'Creation failed');
-  //           response.render('profileCreation');
-  //       })
-  //   }
+router.post('/', function(request, response){
+  console.log("made it to profileCreation post route")
+  //response.render('profileCreation')
+  request.assert('email', 'email is required').notEmpty();
+   request.assert('pswd', 'password is required').notEmpty();
+   request.assert('cfmPswd', 'confirm password is required').notEmpty();
+   request.assert('pswd', 'password and confirm password are not the same').equals('cfmPswd');
+   var queryCheckEmailNotTaken = 'select (email) from users where(email = $1)';
+   if(db.oneOrNone(queryCheckEmailNotTaken, 'email')=== null){
+     //make eroor message
+     request.flash('error', 'Creation failed');
+     response.render('profileCreation');
+   }
+   else{
+    var email = request.sanitize('email').escape().trim();
+    var password = request.sanitize('pswd').escape().trim();
+     var isProf;
+     if(request.isProffessor)
+     {
+        isProf = true;
+     }
+     else
+     {
+        isProf = false;
+     }
+     var dbQueryAddUserString = 'Insert into users(usrID, fName, lName, email, pwdID, isProff) values($1, $2, $3, $4, $5, $6)';
+     userID = 1;
+     db.result('select * from users', r => r.rows).then(data => {userID += data.rowCount; console.log("COUNTED");
+      db.manyOrNone(dbQueryAddUserString, [userID, 'John', 'Doe', email, password, isProf]).then(function(row){
+        console.log("Successfully added new user");
+        response.redirect('/success?valid='+'success'+'&usrid='+userID+'&isproff='+isProf);
+      }).catch(function(error){
+        console.log('Failed');
+        response.redirect('/profileCreatioin?registerButton=');
+      })
+
+
+     });
+     }
 });
 
 
