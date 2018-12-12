@@ -48,7 +48,7 @@
 
               <div class="form-group">
                 <label for="passwrd">Password</label>
-                <input type="password" class="form-control" name="pswd" id="passwrd" placeholder="Password" value="<% data.pswd %>">
+                <input type="password" class="form-control" name="pswd" id="passwrd" placeholder="Password" value="<%= data.pswd %>">
               </div>
 
               <button type="submit" name="loginButton">Login</button>
@@ -62,9 +62,10 @@
             <button type="button" name="forgotButton">Forgot Password</button>
             </form>
             <br>
-            <form action="/profileCreation" method="get">
+            <!-- <form action="/profileCreation" method="get">
             <button type="submit" name="registerButton" >Register</button>
-            </form>
+            </form> -->
+            <a href="/profileCreation">Register</a>
 
           </div>
 

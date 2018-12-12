@@ -1,0 +1,26 @@
+<!--Desmond Manthy-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Events</title>
+</head>
+<body>
+<h1><%='Assignments for '+passedmonth.toString()+'/'+passedday.toString()+'/'+passedyear.toString()%></h1>
+<a href=<%='calendar?currentMonth='+(passedmonth-1).toString()+'&currentYear='+passedyear.toString()+'&usrid='+passedusrid.toString()+'&isproff='+passedisproff.toString()%> onmouseover="style.color='gray'" onmouseout="style.color='blue'">Return to Calendar </a></br>
+<h3>Today's Event</h3>
+<table style="width:100%" border>
+    <tr>
+        <th>Assignment</th>
+    </tr>
+    <% data.forEach(function(item){ %>
+    <tr><td><%=item%></td></tr>
+    <% console.log(item) %>
+    
+    
+    <% }); %>
+
+
+    })
+</table>
+</body>
+</html>
