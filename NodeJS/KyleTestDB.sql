@@ -49,7 +49,8 @@ description text
 );
 
 insert into events(courseID, dueDate, description) values (100, '2018-12-15', 'Read Chapter 6 of textbook');
-
+insert into events(courseID, dueDate, description) values (200, '2018-12-16', 'Quiz'), (200, '2018-12-12', 'HW 10'), (100, '2018-12-18', 'Quiz'), (100, '2018-12-15', 'Quiz'), (300, '2018-12-20', 'Test');
+insert into events(courseID, dueDate, description) values (300, '2018-12-4', 'Read chapter 3'), (350, '2018-12-19', 'Review'), (350, '2018-12-13', 'Read chapter 4'), (400, '2018-12-16', 'Test 2'), (200, '2018-11-25', 'Midterm 1');
 
 SELECT *
 FROM users U
@@ -67,6 +68,8 @@ ON u.usrID=E.usrID
 JOIN course C 
 ON C.courseID=E.courseID
 where (u.usrID = 1);
+
+select (EV.dueDate) from users U Join enrollment E on u.usrID=E.usrID join course C on C.courseID=E.courseID join events EV on ev.courseID=C.courseID where (U.usrID = 1);
 
 
 

@@ -11,6 +11,11 @@ router.get('/', function(request, response){
 })
 
 
+router.post('/professor', function(request, response){
+    console.log("made it to the post request");
+    response.redirect('/login');
+})
+
 
 
 

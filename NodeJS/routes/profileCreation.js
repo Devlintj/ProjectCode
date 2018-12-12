@@ -8,8 +8,8 @@ var db = require('../database.js');
 
 
 router.post('/profileCreation', function(request, response){
-  console.log("made it to profileCreation post route")
-  response.redirect('/login')
+  console.log("made it to profileCreation post route");
+  response.render('profileCreation');
   //request.assert('email', 'email is required').notEmpty();
   // request.assert('pswd', 'password is required').notEmpty();
   // request.assert('cfmPswd', 'confirm password is required').notEmpty();
@@ -44,7 +44,7 @@ router.get('/', function (request, response) {
 router.get('/profileCreation', function(request, response){
     console.log('Made it to profileCreation route');
     response.render('profileCreation');
-});
+})
 
 
 module.exports = router;
