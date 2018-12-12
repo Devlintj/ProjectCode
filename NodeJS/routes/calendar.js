@@ -9,6 +9,7 @@ var db = require('../database.js');
 var dueDates = [];
 
 router.get('/', function (request, response) {
+  dueDates = [];
    // redirect from root route to /login route
    console.log("made it to calendar root get route");
    console.log(request.query);
@@ -74,20 +75,33 @@ router.get('/', function (request, response) {
       var size = dueDates.length;
       var days = [];
       var dayStr;
+      var dayStrSplit;
+      console.log('FOR LOOP');
       for(var i=0;i<size;i++){
         dayStr = dueDates[i].toString();
-        dayStr = dayStr.splitStr(" ");
-        dayStr = dayStr[2];
+        console.log(dayStr);
+        dayStr = dayStr.substring(8,10);
+        console.log(dayStr);
         days.push(dayStr);
-
       }
       console.log("displaying day strings");
       console.log(days);
+
+      response.render('index', {
+      month:requestedMonth, 
+      year:requestedYear, 
+      userid: usrid, 
+      usertype: isproff, 
+      datesWithAssignments: days,
+     });
+
+
 
 
 
      }).catch(function(error){
           request.flash('error', 'Could not find user course data');
+          response.redirect('/login');
       })
 
 
@@ -109,12 +123,12 @@ router.get('/', function (request, response) {
 
 
       //TODO move this code into the query code
-     response.render('index', {
-      month:requestedMonth, 
-      year:requestedYear, 
-      userid: usrid, 
-      usertype: isproff
-     });
+     // response.render('index', {
+     //  month:requestedMonth, 
+     //  year:requestedYear, 
+     //  userid: usrid, 
+     //  usertype: isproff
+     // });
 
  }
 

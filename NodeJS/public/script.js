@@ -9,6 +9,32 @@ console.log(typeof usertype);
 var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var currentCalendar;
 
+var dueDatesStr = document.getElementById("assignmentDates").textContent.split(",");
+console.log(dueDatesStr);
+var numOfDates = dueDatesStr.length;
+console.log('size', numOfDates);
+var dueDates = [];
+var dueInt = 0;
+for(var i=0;i<numOfDates;i++){
+    //console.log('Converting to Integers');
+    dueInt = parseInt(dueDatesStr[i], 10);
+    dueDates.push(dueInt);
+    
+}
+var lastIndex = numOfDates-1;
+dueDates = dueDates.sort(function (a, b) {  return a - b;  });
+console.log('Sorted ', dueDates);
+function removeDuplicateUsingFilter(arr){
+    let unique_array = arr.filter(function(elem, index, self) {
+        return index == self.indexOf(elem);
+    });
+    return unique_array
+}
+dueDates = removeDuplicateUsingFilter(dueDates);
+console.log('Removing duplicates: ', dueDates);
+numOfDates = dueDates.length;
+
+
 
 window.onload = function(){
     console.log('onloading window');
@@ -71,6 +97,7 @@ window.onload = function(){
 }
 
 function get_calendar(day_no, days){
+    var assignmentCounter = 0;
     var table = document.createElement('table');
     var tr = document.createElement('tr');
     
@@ -96,19 +123,18 @@ function get_calendar(day_no, days){
         if(c == day_no){
             break;
         }
+
         var td = document.createElement('td');
         td.innerHTML = "";
         tr.appendChild(td);
     }
-    
+    var assignmentCounter = 0;
     var count = 1;
     for(; c<=6; c++){
         var td = document.createElement('td');
         var dayString = count.toString();
-        // var linkAddress = "/calendar?currentMonth="+8+"&currentYear="+
-        //link the days to the student or professor html pages
-        //td.innerHTML = dayString.link("/calendar?currentMonth=8&currentYear=2017");
-        //console.log("MADE IT HERE");
+
+
         var queryString = "?day="+dayString+"&month="+currMonth+"&year="+currYear+"&usrid="+usrid.toString()+"&isproff="+usertype;
         if(usertype === "false"){
             queryString = "/student"+queryString;
@@ -118,6 +144,16 @@ function get_calendar(day_no, days){
         else{
             queryString = "/professor"+queryString;
             td.innerHTML = dayString.link(queryString);
+        }
+
+        //check days to see if there is an assignment due
+        if(count === dueDates[assignmentCounter] && assignmentCounter<numOfDates){
+            console.log('updating html styles');
+            assignmentCounter++;
+            td.style.background = 'none';
+            td.style.backgroundColor= "#E31313";
+            
+            
         }
 
 
@@ -145,6 +181,17 @@ function get_calendar(day_no, days){
                 queryString = "/professor"+queryString;
                 td.innerHTML = dayString.link(queryString);
             }
+
+            //check days to see if there is an assignment due
+        if(count === dueDates[assignmentCounter] && assignmentCounter<numOfDates){
+            console.log('updating html styles');
+            assignmentCounter++;
+             td.style.background = 'none';
+            td.style.backgroundColor= "#E31313";
+            
+            
+        }
+
             //td.innerHTML = count;
             count++;
             tr.appendChild(td);
